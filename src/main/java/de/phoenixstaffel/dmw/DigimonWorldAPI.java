@@ -3,6 +3,7 @@ package de.phoenixstaffel.dmw;
 import java.util.Random;
 
 import de.phoenixstaffel.dmw.api.ActiveMap;
+import de.phoenixstaffel.dmw.api.World;
 import de.phoenixstaffel.dmw.events.EventHandlingMethod;
 import de.phoenixstaffel.dmw.events.EventManager;
 import de.phoenixstaffel.dmw.events.LoadGameEvent;
@@ -34,6 +35,7 @@ public class DigimonWorldAPI {
     private int seed = 0;
     
     private ActiveMap map = new ActiveMap(this);
+    private World world = new World(this);
     
     @SuppressWarnings("unused")
     public static void main(String[] args) {
@@ -94,6 +96,10 @@ public class DigimonWorldAPI {
     @EventHandlingMethod
     public void onGameLoad(LoadGameEvent event) {
         System.out.println("Savestate loaded, new seed is " + seed);
+    }
+    
+    public World getWorld() {
+        return world;
     }
     
     public ActiveMap getActiveMap() {

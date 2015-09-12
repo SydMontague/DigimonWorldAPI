@@ -5,7 +5,7 @@ import de.phoenixstaffel.dmw.api.map.DigimonEncounter;
 import de.phoenixstaffel.dmw.core.StructureElement;
 import de.phoenixstaffel.dmw.core.StructureElementType;
 
-public class PartnerDigimon extends DigimonEncounter {
+public class PartnerDigimonEntity extends DigimonEncounter {
     
     {
         addStructureElement(new StructureElement("Name", StructureElementType.STRING, 12));
@@ -16,7 +16,7 @@ public class PartnerDigimon extends DigimonEncounter {
         addStructureElement(new StructureElement("Unknown4", StructureElementType.UNDEFINED, 2));
     }
     
-    public PartnerDigimon(DigimonWorldAPI main, long baseAddress) {
+    public PartnerDigimonEntity(DigimonWorldAPI main, long baseAddress) {
         super(main, baseAddress, (short) 0);
     }
     

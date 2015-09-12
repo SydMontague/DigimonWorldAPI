@@ -16,8 +16,8 @@ public class PartnerDigimon extends DigimonEncounter {
         addStructureElement(new StructureElement("Unknown4", StructureElementType.UNDEFINED, 2));
     }
     
-    public PartnerDigimon(DigimonWorldAPI main, long baseAddress, short id) {
-        super(main, baseAddress, id);
+    public PartnerDigimon(DigimonWorldAPI main, long baseAddress) {
+        super(main, baseAddress, (short) 0);
     }
     
     public String getName() { // TODO read and convert 2byte string format

@@ -6,8 +6,8 @@ public enum StatusEffect {
     POISON(1),
     CONFUSE(2),
     STUN(3),
-    FLAT(4);    
-    
+    FLAT(4);
+
     private int id;
     
     private StatusEffect(int id) {
@@ -19,10 +19,9 @@ public enum StatusEffect {
     }
     
     public static StatusEffect valueOf(byte id) {
-        for(StatusEffect value : values()) {
-            if(id == value.getId())
+        for (StatusEffect value : values())
+            if (id == value.getId())
                 return value;
-        }
         return UNDEFINED;
     }
     

@@ -18,10 +18,9 @@ public enum MoveRange {
     }
     
     public static MoveRange valueOf(byte id) {
-        for(MoveRange value : values()) {
-            if(id == value.getId())
+        for (MoveRange value : values())
+            if (id == value.getId())
                 return value;
-        }
         return UNDEFINED;
     }
     

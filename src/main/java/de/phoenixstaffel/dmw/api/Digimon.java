@@ -28,12 +28,12 @@ public class Digimon extends CompoundStructure {
     
     public Digimon(DigimonWorldAPI randomizer, short id) {
         this.id = id;
-        this.general = new GeneralValues(randomizer, GENERAL_START, id);
-        this.moveset = new DigimonMoveset(randomizer, MOVES_START, id);
-        this.raising = new RaisingValues(randomizer, RAISING_START, id);
-        this.statsgain = new StatsGains(randomizer, STATSGAIN_START, id);
-        this.evolutionPaths = new EvolutionPaths(randomizer, EVOLVE_PATH_START, id);
-        this.evolutionRequirements = new EvolutionRequirements(randomizer, REQUIREMENTS_START, id);
+        general = new GeneralValues(randomizer, GENERAL_START, id);
+        moveset = new DigimonMoveset(randomizer, MOVES_START, id);
+        raising = new RaisingValues(randomizer, RAISING_START, id);
+        statsgain = new StatsGains(randomizer, STATSGAIN_START, id);
+        evolutionPaths = new EvolutionPaths(randomizer, EVOLVE_PATH_START, id);
+        evolutionRequirements = new EvolutionRequirements(randomizer, REQUIREMENTS_START, id);
     }
     
     public int getId() {

@@ -9,7 +9,6 @@ import de.phoenixstaffel.dmw.core.StructureElementType;
 
 public class DigimonEncounter extends BaseStructure {
     
-    
     {
         addStructureElement(new StructureElement("DigimonType", StructureElementType.INT));
         addStructureElement(new StructureElement("Undefined1", StructureElementType.UNDEFINED, 14));

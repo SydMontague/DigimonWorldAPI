@@ -6,7 +6,7 @@ import de.phoenixstaffel.dmw.api.move.MoveName;
 import de.phoenixstaffel.dmw.api.move.MoveValues;
 import de.phoenixstaffel.dmw.core.CompoundStructure;
 
-public class Move extends CompoundStructure {    
+public class Move extends CompoundStructure {
     private static final long NAME = 0xB7D9F4;
     private static final long GENERAL_VALUES = 0xB7DBE0;
     private static final long LEARNING_CHANCE = 0xB7D944;
@@ -20,9 +20,9 @@ public class Move extends CompoundStructure {
     
     public Move(DigimonWorldAPI main, byte id) {
         this.id = id;
-        this.learning = new MoveLearnChances(main, LEARNING_CHANCE, id);
-        this.name = new MoveName(main, NAME, id);
-        this.values = new MoveValues(main, GENERAL_VALUES, id);
+        learning = new MoveLearnChances(main, LEARNING_CHANCE, id);
+        name = new MoveName(main, NAME, id);
+        values = new MoveValues(main, GENERAL_VALUES, id);
     }
     
     public int getId() {

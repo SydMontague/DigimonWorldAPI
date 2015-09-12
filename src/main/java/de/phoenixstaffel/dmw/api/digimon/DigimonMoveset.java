@@ -31,12 +31,11 @@ public class DigimonMoveset extends BaseStructure {
     public void setMoves(Move[] moves) {
         byte[] array = new byte[MOVES_LENGHT];
         
-        for (int i = 0; i < MOVES_LENGHT; i++) {
+        for (int i = 0; i < MOVES_LENGHT; i++)
             if (moves.length > i)
                 array[i] = (byte) moves[i].getId();
             else
                 array[i] = -1;
-        }
         
         setMoves(array);
     }

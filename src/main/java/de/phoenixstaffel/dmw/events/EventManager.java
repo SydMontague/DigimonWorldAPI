@@ -34,7 +34,7 @@ public class EventManager {
     
     public void callEvent(Event event) {
         if (handlers.containsKey(event.getClass()))
-            for (Tuple<Object, Method> a : handlers.get(event.getClass())) {
+            for (Tuple<Object, Method> a : handlers.get(event.getClass()))
                 try {
                     a.getSecondValue().setAccessible(true);
                     a.getSecondValue().invoke(a.getFirstValue(), event);
@@ -42,6 +42,5 @@ public class EventManager {
                 catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
                     e.printStackTrace();
                 }
-            }
     }
 }

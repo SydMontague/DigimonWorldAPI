@@ -13,9 +13,8 @@ public class ItemManager {
     private List<Item> itemList = new ArrayList<>();
     
     public ItemManager(DigimonWorldAPI randomizer) {
-        for (byte i = 0; i < ITEM_COUNT - 1; i++) {
+        for (byte i = 0; i < ITEM_COUNT - 1; i++)
             itemList.add(new Item(randomizer, BASE_ADDRESS, DESC_ADDRESS, i));
-        }
     }
     
     public Item getItem(byte id) {

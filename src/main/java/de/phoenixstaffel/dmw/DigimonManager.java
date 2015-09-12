@@ -9,9 +9,8 @@ public class DigimonManager {
     private List<Digimon> digimonList = new ArrayList<>();
     
     public DigimonManager(DigimonWorldAPI randomizer) {
-        for (short i = 0; i < 180; i++) {
+        for (short i = 0; i < 180; i++)
             digimonList.add(new Digimon(randomizer, i));
-        }
     }
     
     public Digimon getDigimon(short id) {

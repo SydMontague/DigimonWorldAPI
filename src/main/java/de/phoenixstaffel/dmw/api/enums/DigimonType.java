@@ -17,10 +17,9 @@ public enum DigimonType {
     }
     
     public static DigimonType valueOf(byte id) {
-        for (DigimonType value : values()) {
+        for (DigimonType value : values())
             if (id == value.getId())
                 return value;
-        }
         return UNDEFINED;
     }
     

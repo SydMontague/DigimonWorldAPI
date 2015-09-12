@@ -21,10 +21,9 @@ public enum Speciality {
     }
     
     public static Speciality valueOf(byte id) {
-        for (Speciality value : values()) {
+        for (Speciality value : values())
             if (id == value.getId())
                 return value;
-        }
         return UNDEFINED;
     }
     

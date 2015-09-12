@@ -5,15 +5,13 @@ import java.util.List;
 
 import de.phoenixstaffel.dmw.api.Move;
 
-
 public class MovesManager {
     private static final int MOVE_COUNT = 121;
     private List<Move> moveList = new ArrayList<>();
     
     public MovesManager(DigimonWorldAPI randomizer) {
-        for (byte i = 0; i < MOVE_COUNT; i++) {
+        for (byte i = 0; i < MOVE_COUNT; i++)
             moveList.add(new Move(randomizer, i));
-        }
     }
     
     public Move getMove(byte id) {

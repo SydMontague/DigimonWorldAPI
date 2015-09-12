@@ -19,10 +19,9 @@ public enum DigimonLevel {
     }
     
     public static DigimonLevel valueOf(byte id) {
-        for (DigimonLevel value : values()) {
+        for (DigimonLevel value : values())
             if (id == value.getId())
                 return value;
-        }
         return UNDEFINED;
     }
     

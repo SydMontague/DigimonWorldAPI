@@ -16,7 +16,7 @@ public abstract class BaseStructure implements Structure {
         this.baseAddress = baseAddress;
         this.id = id;
         this.main = main;
-        this.memory = main != null ? main.getMemoryAccess() : null;
+        memory = main != null ? main.getMemoryAccess() : null;
     }
     
     public DigimonWorldAPI getMain() {
@@ -32,10 +32,9 @@ public abstract class BaseStructure implements Structure {
     }
     
     protected StructureElement getStructureElementByName(String name) {
-        for (StructureElement element : elements) {
+        for (StructureElement element : elements)
             if (element.getName().equals(name))
                 return element;
-        }
         
         return null;
     }

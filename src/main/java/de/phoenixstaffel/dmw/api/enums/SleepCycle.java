@@ -22,10 +22,9 @@ public enum SleepCycle {
     }
     
     public static SleepCycle valueOf(byte id) {
-        for (SleepCycle value : values()) {
+        for (SleepCycle value : values())
             if (id == value.getId())
                 return value;
-        }
         return UNDEFINED;
     }
 }

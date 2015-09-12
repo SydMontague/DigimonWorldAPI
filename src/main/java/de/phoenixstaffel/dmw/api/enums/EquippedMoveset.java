@@ -15,12 +15,12 @@ public class EquippedMoveset {
     private final MemoryAccess memory;
     
     public EquippedMoveset(Digimon digimon, long move1, long move2, long move3, long finisher) {
-        this.move1Address = move1;
-        this.move2Address = move2;
-        this.move3Address = move3;
-        this.finisherAddress = finisher;
+        move1Address = move1;
+        move2Address = move2;
+        move3Address = move3;
+        finisherAddress = finisher;
         this.digimon = digimon;
-        this.memory = digimon.getEvolutionPaths().getMain().getMemoryAccess();
+        memory = digimon.getEvolutionPaths().getMain().getMemoryAccess();
     }
     
     public Move getFirstMove() {

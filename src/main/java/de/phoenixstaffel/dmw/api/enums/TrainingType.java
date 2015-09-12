@@ -18,10 +18,9 @@ public enum TrainingType {
     }
     
     public static TrainingType valueOf(byte id) {
-        for (TrainingType value : values()) {
+        for (TrainingType value : values())
             if (id == value.getId())
                 return value;
-        }
         return FILTH;
     }
 }

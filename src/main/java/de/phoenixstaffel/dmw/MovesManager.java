@@ -15,7 +15,7 @@ public class MovesManager {
     }
     
     public Move getMove(byte id) {
-        return moveList.size() > id && id > 0 ? moveList.get(id) : null;
+        return moveList.size() > id && id >= 0 ? moveList.get(id) : null;
     }
 
     public List<Move> getMoves() {

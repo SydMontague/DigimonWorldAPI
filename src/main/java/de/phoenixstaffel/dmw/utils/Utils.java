@@ -204,7 +204,6 @@ public class Utils {
                 break;
         }
         
-        System.out.println(value + " " + character);
         return "Ä";
     }
 }

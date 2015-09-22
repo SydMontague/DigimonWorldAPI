@@ -13,7 +13,7 @@ public class DigimonMoveset extends BaseStructure {
     
     {
         addStructureElement(new StructureElement("Moves", StructureElementType.BYTE_ARRAY, MOVES_LENGHT));
-        addStructureElement(new StructureElement("MoveSet", StructureElementType.UNDEFINED, 36));
+        addStructureElement(new StructureElement("GeneralValues", StructureElementType.UNDEFINED, 36));
     }
     
     public DigimonMoveset(DigimonWorldAPI main, long baseAddress, int id) {

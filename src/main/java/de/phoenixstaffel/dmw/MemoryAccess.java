@@ -154,9 +154,7 @@ public class MemoryAccess {
             case LONG:
                 return memory.getLong(0);
             case STRING:
-                // if(memory.getByte(0) == (byte) 130) //check for string in game format
                 return Utils.parseGameString(memory, false);
-                // return memory.getString(0);
             case STRING_POINTER:
                 return new StringPointer(memory.getInt(0), readString(convertGameAddress(memory.getInt(0)), 100));
             case BYTE_ARRAY:

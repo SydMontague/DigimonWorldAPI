@@ -96,4 +96,28 @@ public abstract class BaseStructure implements Structure {
         
         memory.write(getBaseAddress() + offset, element, value);
     }
+    
+    /**
+     * Method used to generate setters and getters for this class.
+     * It's a simplistic approach that doesn't take into account any special classes or enums and therefore needs some adaption for actual use.
+     * 
+     * @return the code as a String with line breaks and spaces and all.
+     */
+    public String generateGetterAndSetter() {
+        StringBuilder str = new StringBuilder();
+        
+        for (StructureElement element : elements) {
+            str.append("    public " + element.getElementType().getJavaTypeName() + " get" + element.getName() + "() {\n");
+            str.append("        return (" + element.getElementType().getJavaTypeName() + ") readStructure(\"" + element.getName() + "\");\n");
+            str.append("    }\n");
+            str.append("    \n");
+            
+            str.append("    public void set" + element.getName() + "(" + element.getElementType().getJavaTypeName() + " value) {\n");
+            str.append("        writeStructure(\"" + element.getName() + "\", value);\n");
+            str.append("    }\n");
+            str.append("    \n");
+        }
+        
+        return str.toString();
+    }
 }

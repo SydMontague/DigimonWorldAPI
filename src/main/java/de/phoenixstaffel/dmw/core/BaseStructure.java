@@ -49,7 +49,6 @@ public abstract class BaseStructure implements Structure {
     
     protected Object readStructure(String name) {
         return readStructure(getStructureElementByName(name));
-        
     }
     
     protected Object readStructure(int index) {

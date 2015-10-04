@@ -20,7 +20,7 @@ public class PartnerDigimonEntity extends DigimonEncounter {
         super(main, baseAddress, (short) 0);
     }
     
-    public String getName() { // TODO read and convert 2byte string format
+    public String getName() {
         return (String) readStructure("Name");
     }
     

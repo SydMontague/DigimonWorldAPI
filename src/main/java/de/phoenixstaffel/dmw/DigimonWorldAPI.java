@@ -4,6 +4,8 @@ import java.util.Random;
 
 import de.phoenixstaffel.dmw.api.ActiveMap;
 import de.phoenixstaffel.dmw.api.World;
+import de.phoenixstaffel.dmw.emulator.EPSXE190;
+import de.phoenixstaffel.dmw.emulator.Emulator;
 import de.phoenixstaffel.dmw.events.EventHandlingMethod;
 import de.phoenixstaffel.dmw.events.EventManager;
 import de.phoenixstaffel.dmw.events.LoadGameEvent;
@@ -26,6 +28,8 @@ public class DigimonWorldAPI {
     private static long MAX_HP = 0xBAD190;
     
     private MemoryAccess manager = new MemoryAccess();
+    private Emulator emulator;
+    
     private EventManager eventManager = new EventManager();
     private PluginManager pluginManager;
     
@@ -44,11 +48,13 @@ public class DigimonWorldAPI {
     }
     
     public DigimonWorldAPI() {
-        eventManager.registerEvents(this);
+        this.emulator = new EPSXE190(this); //TODO detect emulator type and version
         pluginManager = new PluginManager(this);
         
-        // while (true)
-        // run();
+        eventManager.registerEvents(this);
+        
+         //while(true)
+         //run();
     }
     
     @SuppressWarnings("unused")
@@ -98,6 +104,10 @@ public class DigimonWorldAPI {
     @EventHandlingMethod
     public void onGameLoad(LoadGameEvent event) {
         System.out.println("Savestate loaded, new seed is " + seed);
+    }
+    
+    public Emulator getEmulator() {
+        return emulator;
     }
     
     public World getWorld() {

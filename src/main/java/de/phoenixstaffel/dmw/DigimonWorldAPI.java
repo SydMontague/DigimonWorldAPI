@@ -8,12 +8,11 @@ import de.phoenixstaffel.dmw.events.EventHandlingMethod;
 import de.phoenixstaffel.dmw.events.EventManager;
 import de.phoenixstaffel.dmw.events.LoadGameEvent;
 import de.phoenixstaffel.dmw.events.NewGameEvent;
+import de.phoenixstaffel.dmw.plugins.PluginManager;
 
 /*
  * TODO let randomiser start the emulator?
  * TODO create "Digimon World API" module
- * TODO create Plugin/Randomiser loader module
- * TODO read alternative String format (2 bytes, 0d130 0d<value> defines String, used for for player and Digimon name)
  */
 public class DigimonWorldAPI {
     private static long SLEEP_TIME = 10L;
@@ -28,6 +27,8 @@ public class DigimonWorldAPI {
     
     private MemoryAccess manager = new MemoryAccess();
     private EventManager eventManager = new EventManager();
+    private PluginManager pluginManager;
+    
     private ItemManager itemManager = new ItemManager(this);
     private MovesManager moveManager = new MovesManager(this);
     private DigimonManager digimonManager = new DigimonManager(this);
@@ -44,6 +45,7 @@ public class DigimonWorldAPI {
     
     public DigimonWorldAPI() {
         eventManager.registerEvents(this);
+        pluginManager = new PluginManager(this);
         
         // while (true)
         // run();
@@ -124,5 +126,9 @@ public class DigimonWorldAPI {
     
     public DigimonManager getDigimonManager() {
         return digimonManager;
+    }
+    
+    public PluginManager getPluginManager() {
+        return pluginManager;
     }
 }

@@ -25,7 +25,7 @@ public class EPSXEInputSettings extends BaseStructure {
     }
     
     public EPSXEInputSettings(DigimonWorldAPI main, long baseAddress) {
-        super(main, baseAddress, 0);
+        super(main, baseAddress);
     }
     
     public short getButtonMapping(PSXControllerButton button) {

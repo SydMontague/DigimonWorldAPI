@@ -1,6 +1,7 @@
 package de.phoenixstaffel.dmw.api.item;
 
 import de.phoenixstaffel.dmw.DigimonWorldAPI;
+import de.phoenixstaffel.dmw.core.AbstractStructureElement;
 import de.phoenixstaffel.dmw.core.BaseStructure;
 import de.phoenixstaffel.dmw.core.StructureElement;
 import de.phoenixstaffel.dmw.core.StructureElementType;
@@ -27,7 +28,7 @@ public class ItemValues extends BaseStructure {
     }
     
     public void setName(String name) {
-        StructureElement element = getStructureElementByName("Name");
+        AbstractStructureElement element = getStructureElementByName("Name");
         writeStructure("Name", name.length() > element.getSize() ? name.substring(0, element.getSize() - 1) : name);
     }
     

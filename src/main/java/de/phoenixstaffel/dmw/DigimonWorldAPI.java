@@ -48,13 +48,12 @@ public class DigimonWorldAPI {
     }
     
     public DigimonWorldAPI() {
-        this.emulator = new EPSXE190(this); //TODO detect emulator type and version
+        this.emulator = new EPSXE190(this); // TODO detect emulator type and version
         pluginManager = new PluginManager(this);
-        
         eventManager.registerEvents(this);
         
-         //while(true)
-         //run();
+        // while(true)
+        // run();
     }
     
     @SuppressWarnings("unused")

@@ -53,7 +53,7 @@ public class PartnerValues extends BaseStructure {
     }
     
     public PartnerValues(DigimonWorldAPI main, long baseAddress) {
-        super(main, baseAddress, 0);
+        super(main, baseAddress);
     }
     
     public DigimonConditions getConditions() {

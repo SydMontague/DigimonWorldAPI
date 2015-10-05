@@ -17,6 +17,14 @@ public class MovesManager {
     public Move getMove(byte id) {
         return moveList.size() > id && id >= 0 ? moveList.get(id) : null;
     }
+    
+    public Move getMove(String name) {
+        for(Move move : moveList)
+            if(move.getName().getName().getContent().equalsIgnoreCase(name))
+                return move;
+        
+        return null;
+    }
 
     public List<Move> getMoves() {
         return moveList;

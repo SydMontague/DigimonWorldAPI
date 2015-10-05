@@ -9,8 +9,8 @@ import com.sun.jna.Pointer;
 import com.sun.jna.platform.win32.WinNT.HANDLE;
 import com.sun.jna.ptr.IntByReference;
 
+import de.phoenixstaffel.dmw.core.AbstractStructureElement;
 import de.phoenixstaffel.dmw.core.StringPointer;
-import de.phoenixstaffel.dmw.core.StructureElement;
 import de.phoenixstaffel.dmw.jna.Kernel32;
 import de.phoenixstaffel.dmw.jna.User32;
 import de.phoenixstaffel.dmw.utils.Utils;
@@ -140,7 +140,7 @@ public class MemoryAccess {
         kernel.WriteProcessMemory(process, new Pointer(address), memory, string.length(), null);
     }
     
-    public Object read(long address, StructureElement element) {
+    public Object read(long address, AbstractStructureElement element) {
         Memory memory = new Memory(element.getSize());
         kernel.ReadProcessMemory(process, new Pointer(address), memory, element.getSize(), null);
         
@@ -166,7 +166,7 @@ public class MemoryAccess {
         return null;
     }
     
-    public void write(long address, StructureElement element, Object value) {
+    public void write(long address, AbstractStructureElement element, Object value) {
         Memory memory = new Memory(element.getSize());
         
         switch (element.getElementType()) {

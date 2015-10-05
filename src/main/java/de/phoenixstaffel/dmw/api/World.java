@@ -6,10 +6,12 @@ import de.phoenixstaffel.dmw.core.CompoundStructure;
 public class World extends CompoundStructure {
     private PartnerDigimon partner;
     private Player player;
+    private Time time;
     
     public World(DigimonWorldAPI main) {
         partner = new PartnerDigimon(main);
         player = new Player(main);
+        time = new Time(main);
     }
     
     public PartnerDigimon getPartner() {
@@ -18,5 +20,9 @@ public class World extends CompoundStructure {
     
     public Player getPlayer() {
         return player;
+    }
+    
+    public Time getTime() {
+        return time;
     }
 }

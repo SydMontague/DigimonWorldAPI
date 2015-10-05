@@ -16,6 +16,14 @@ public class DigimonManager {
     public Digimon getDigimon(short id) {
         return digimonList.get(id);
     }
+    
+    public Digimon getDigimon(String name) {
+        for(Digimon digimon : digimonList)
+            if(digimon.getGeneralValues().getName().equalsIgnoreCase(name))
+                return digimon;
+        
+        return null;
+    }
 
     public List<Digimon> getDigimons() {
         return digimonList;

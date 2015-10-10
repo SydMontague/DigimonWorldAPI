@@ -23,7 +23,9 @@ public class DigimonEncounter extends Entity {
         addStructureElement(new StructureElement("CurrentMP", StructureElementType.SHORT));
         addStructureElement(new StructureElement("Undefined5", StructureElementType.UNDEFINED, 16));
         addStructureElement(new StructureElement("Bits", StructureElementType.SHORT));
-        addStructureElement(new StructureElement("Undefined6", StructureElementType.UNDEFINED, 6));
+        addStructureElement(new StructureElement("Undefined6", StructureElementType.UNDEFINED, 4));
+        addStructureElement(new StructureElement("Autotalk", StructureElementType.BYTE));
+        addStructureElement(new StructureElement("Undefined7", StructureElementType.UNDEFINED, 1));
     }
     
     public DigimonEncounter(DigimonWorldAPI main, long baseAddress, short id) {
@@ -148,5 +150,13 @@ public class DigimonEncounter extends Entity {
     
     public void setBits(short bits) {
         writeStructure("Bits", bits);
+    }
+    
+    public boolean isAutotalk() {
+        return (byte) readStructure("Autotalk") != 0;
+    }
+    
+    public void setAutotalk(boolean autotalk) {
+        writeStructure("Autotalk", (byte) (autotalk ? 1 : 0));
     }
 }

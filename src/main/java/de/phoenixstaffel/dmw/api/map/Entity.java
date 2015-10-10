@@ -11,9 +11,11 @@ public class Entity extends BaseStructure {
         addStructureElement(new StructureElement("DigimonType", StructureElementType.INT));
         addStructureElement(new StructureElement("Undefined1", StructureElementType.UNDEFINED, 14));
         addStructureElement(new StructureElement("Location X", StructureElementType.SHORT));
-        addStructureElement(new StructureElement("Undefined2", StructureElementType.UNDEFINED, 6));
+        addStructureElement(new StructureElement("Undefined2", StructureElementType.UNDEFINED, 2));
+        addStructureElement(new StructureElement("Location Z", StructureElementType.SHORT));
+        addStructureElement(new StructureElement("Undefined3", StructureElementType.UNDEFINED, 2));
         addStructureElement(new StructureElement("Location Y", StructureElementType.SHORT));
-        addStructureElement(new StructureElement("Undefined3", StructureElementType.UNDEFINED, 28));
+        addStructureElement(new StructureElement("Undefined4", StructureElementType.UNDEFINED, 28));
     }
     
     public Entity(DigimonWorldAPI main, long baseAddress, short id) {
@@ -46,6 +48,14 @@ public class Entity extends BaseStructure {
     
     public void setLocationY(short locY) {
         writeStructure("Location Y", locY);
+    }
+
+    public short getLocationZ() {
+        return (short) readStructure("Location Z");
+    }
+    
+    public void setLocationZ(short locZ) {
+        writeStructure("Location Za", locZ);
     }
     
 }

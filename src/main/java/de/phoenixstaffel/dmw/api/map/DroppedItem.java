@@ -9,11 +9,13 @@ import de.phoenixstaffel.dmw.core.StructureElementType;
 public class DroppedItem extends BaseStructure {
     
     {
+        addStructureElement(new StructureElement("Render X", StructureElementType.SHORT));
+        addStructureElement(new StructureElement("Undefined1", StructureElementType.UNDEFINED, 2));
+        addStructureElement(new StructureElement("Render Y", StructureElementType.SHORT));
+        addStructureElement(new StructureElement("Undefined2", StructureElementType.UNDEFINED, 2));
         addStructureElement(new StructureElement("Type", StructureElementType.INT));
         addStructureElement(new StructureElement("Location X", StructureElementType.SHORT));
         addStructureElement(new StructureElement("Location Y", StructureElementType.SHORT));
-        addStructureElement(new StructureElement("Undefined1", StructureElementType.UNDEFINED, 4));
-        addStructureElement(new StructureElement("Undefined2", StructureElementType.UNDEFINED, 4));
     }
     
     public DroppedItem(DigimonWorldAPI main, long baseAddress, short id) {
@@ -46,5 +48,21 @@ public class DroppedItem extends BaseStructure {
     
     public void setLocationY(short locY) {
         writeStructure("Location Y", locY);
+    }
+    
+    public short getRenderLocationX() {
+        return (short) readStructure("Render X");
+    }
+    
+    public void setRenderLocationX(short value) {
+        writeStructure("Render X", value);
+    }
+    
+    public short getRenderLocationY() {
+        return (short) readStructure("Render Y");
+    }
+    
+    public void setRenderLocationY(short value) {
+        writeStructure("Render Y", value);
     }
 }

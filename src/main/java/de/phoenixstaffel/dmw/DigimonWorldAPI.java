@@ -1,15 +1,10 @@
 package de.phoenixstaffel.dmw;
 
-import java.util.Random;
-
 import de.phoenixstaffel.dmw.api.ActiveMap;
 import de.phoenixstaffel.dmw.api.World;
 import de.phoenixstaffel.dmw.emulator.EPSXE190;
 import de.phoenixstaffel.dmw.emulator.Emulator;
-import de.phoenixstaffel.dmw.events.EventHandlingMethod;
 import de.phoenixstaffel.dmw.events.EventManager;
-import de.phoenixstaffel.dmw.events.LoadGameEvent;
-import de.phoenixstaffel.dmw.events.NewGameEvent;
 import de.phoenixstaffel.dmw.plugins.PluginManager;
 
 /*
@@ -18,8 +13,6 @@ import de.phoenixstaffel.dmw.plugins.PluginManager;
  */
 public class DigimonWorldAPI {
     private static long SLEEP_TIME = 10L;
-    private static long SEED_TOP = 0xB8FE6C;
-    private static long SEED_BOTTOM = 0xB8FE74;
     
     /**
      * Used for new game check. It's set to 1 at reset and set to 0 once you press new game.
@@ -37,10 +30,10 @@ public class DigimonWorldAPI {
     private MovesManager moveManager = new MovesManager(this);
     private DigimonManager digimonManager = new DigimonManager(this);
     
-    private int seed = 0;
-    
     private ActiveMap map = new ActiveMap(this);
     private World world = new World(this);
+    
+    private GameState state = null;
     
     @SuppressWarnings("unused")
     public static void main(String[] args) {
@@ -48,17 +41,18 @@ public class DigimonWorldAPI {
     }
     
     public DigimonWorldAPI() {
-        this.emulator = new EPSXE190(this); // TODO detect emulator type and version
+        emulator = new EPSXE190(this); // TODO detect emulator type and version
         pluginManager = new PluginManager(this);
         eventManager.registerEvents(this);
         
-        // while(true)
-        // run();
+        state = initState();
+        
+        while (true)
+            run();
     }
     
-    @SuppressWarnings("unused")
     private void run() {
-        // runStateChangeCheck();
+        stateCheck();
         
         try {
             Thread.sleep(SLEEP_TIME);
@@ -68,41 +62,18 @@ public class DigimonWorldAPI {
         }
     }
     
-    @SuppressWarnings("unused")
-    private void runStateChangeCheck() {
-        int localBackDimensionTimer = manager.readByte(BACK_DIMENSION_TIMER);
-        int localMaxHP = manager.readByte(MAX_HP);
-        int oldSeed = seed;
+    private GameState initState() {
+        int backDimensionTimer = manager.readByte(BACK_DIMENSION_TIMER);
+        int maxHP = manager.readByte(MAX_HP);
         
-        seed = (manager.readShort(SEED_TOP) << 16) + manager.readShort(SEED_BOTTOM) << 0;
-        
-        if (seed == 0 && localMaxHP == 0 && localBackDimensionTimer == 0) {
-            eventManager.callEvent(new NewGameEvent());
-            System.out.println("NewGameEvent " + seed + " " + oldSeed);
-        }
-        else if (oldSeed != seed && localMaxHP != 0) {
-            eventManager.callEvent(new LoadGameEvent());
-            System.out.println("LoadGameEvent " + seed + " " + oldSeed);
-        }
+        return backDimensionTimer == 1 && maxHP == 0 ? GameState.MENU : GameState.INGAME;
     }
     
-    @EventHandlingMethod
-    public void onNewGame(NewGameEvent event) {
-        Random rand = new Random();
+    private void stateCheck() {
+        int backDimensionTimer = manager.readByte(BACK_DIMENSION_TIMER);
+        int maxHP = manager.readByte(MAX_HP);
         
-        int newSeed = 0;
-        while (newSeed == 0)
-            newSeed = rand.nextInt();
-        
-        manager.writeShort(SEED_TOP, (short) (newSeed >> 16));
-        manager.writeShort(SEED_BOTTOM, (short) (newSeed));
-        seed = newSeed;
-        System.out.println("New Game started, seed is " + seed + " " + newSeed);
-    }
-    
-    @EventHandlingMethod
-    public void onGameLoad(LoadGameEvent event) {
-        System.out.println("Savestate loaded, new seed is " + seed);
+        state = state.hasChanged(this, backDimensionTimer, maxHP);
     }
     
     public Emulator getEmulator() {

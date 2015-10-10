@@ -21,7 +21,7 @@ public class EventManager {
             Class<?> parameterClass = method.getParameters()[0].getType();
             
             if (method.getParameterCount() != 1 || !Event.class.isAssignableFrom(parameterClass)) {
-                System.out.println("method x is declared as event handling, but it's parameter declaration is invalid");
+                System.out.println("Warning: Method " + method.getName() + " in " + obj.getClass().getName() + " is declared as event handling, but it's parameter declaration is invalid");
                 continue;
             }
             
@@ -33,14 +33,16 @@ public class EventManager {
     }
     
     public void callEvent(Event event) {
-        if (handlers.containsKey(event.getClass()))
-            for (Tuple<Object, Method> a : handlers.get(event.getClass()))
-                try {
-                    a.getSecondValue().setAccessible(true);
-                    a.getSecondValue().invoke(a.getFirstValue(), event);
-                }
-                catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-                    e.printStackTrace();
-                }
+        if (!handlers.containsKey(event.getClass()))
+            return;
+        
+        for (Tuple<Object, Method> a : handlers.get(event.getClass()))
+            try {
+                a.getSecondValue().setAccessible(true);
+                a.getSecondValue().invoke(a.getFirstValue(), event);
+            }
+            catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
     }
 }

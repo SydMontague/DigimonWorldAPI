@@ -34,6 +34,7 @@ public class DigimonWorldAPI {
     private World world = new World(this);
     
     private GameState state = null;
+    private static boolean RUN = false;
     
     @SuppressWarnings("unused")
     public static void main(String[] args) {
@@ -47,7 +48,7 @@ public class DigimonWorldAPI {
         
         state = initState();
         
-        while (true)
+        while (RUN)
             run();
     }
     

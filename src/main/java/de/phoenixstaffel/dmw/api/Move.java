@@ -1,10 +1,14 @@
 package de.phoenixstaffel.dmw.api;
 
+import java.util.Arrays;
+import java.util.List;
+
 import de.phoenixstaffel.dmw.DigimonWorldAPI;
 import de.phoenixstaffel.dmw.api.move.MoveLearnChances;
 import de.phoenixstaffel.dmw.api.move.MoveName;
 import de.phoenixstaffel.dmw.api.move.MoveValues;
 import de.phoenixstaffel.dmw.core.CompoundStructure;
+import de.phoenixstaffel.dmw.core.Structure;
 
 public class Move extends CompoundStructure {
     private static final long NAME = 0xB7D9F4;
@@ -43,5 +47,10 @@ public class Move extends CompoundStructure {
     
     public boolean isFinisher() {
         return id >= FINISHER_THRESHOLD;
+    }
+
+    @Override
+    public List<Structure> getChildStructures() {
+        return Arrays.asList(learning, name, values);
     }
 }

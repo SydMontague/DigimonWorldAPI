@@ -1,7 +1,11 @@
 package de.phoenixstaffel.dmw.api;
 
+import java.util.Arrays;
+import java.util.List;
+
 import de.phoenixstaffel.dmw.DigimonWorldAPI;
 import de.phoenixstaffel.dmw.core.CompoundStructure;
+import de.phoenixstaffel.dmw.core.Structure;
 
 public class World extends CompoundStructure {
     private PartnerDigimon partner;
@@ -24,5 +28,10 @@ public class World extends CompoundStructure {
     
     public Time getTime() {
         return time;
+    }
+
+    @Override
+    public List<Structure> getChildStructures() {
+        return Arrays.asList(partner, player, time);
     }
 }

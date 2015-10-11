@@ -1,5 +1,8 @@
 package de.phoenixstaffel.dmw.api;
 
+import java.util.Arrays;
+import java.util.List;
+
 import de.phoenixstaffel.dmw.DigimonWorldAPI;
 import de.phoenixstaffel.dmw.api.digimon.DigimonMoveset;
 import de.phoenixstaffel.dmw.api.digimon.EvolutionPaths;
@@ -8,6 +11,7 @@ import de.phoenixstaffel.dmw.api.digimon.GeneralValues;
 import de.phoenixstaffel.dmw.api.digimon.RaisingValues;
 import de.phoenixstaffel.dmw.api.digimon.StatsGains;
 import de.phoenixstaffel.dmw.core.CompoundStructure;
+import de.phoenixstaffel.dmw.core.Structure;
 
 public class Digimon extends CompoundStructure {
     // TODO put these into the manager
@@ -62,5 +66,10 @@ public class Digimon extends CompoundStructure {
     
     public EvolutionRequirements getEvolutionRequirements() {
         return evolutionRequirements;
+    }
+    
+    @Override
+    public List<Structure> getChildStructures() {
+        return Arrays.asList(general, moveset, raising, statsgain, evolutionPaths, evolutionRequirements);
     }
 }

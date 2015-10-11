@@ -3,6 +3,8 @@ package de.phoenixstaffel.dmw.core;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.jna.Memory;
+
 import de.phoenixstaffel.dmw.DigimonWorldAPI;
 import de.phoenixstaffel.dmw.MemoryAccess;
 
@@ -125,5 +127,38 @@ public abstract class BaseStructure implements Structure {
         }
         
         return str.toString();
+    }
+    
+    @Override
+    public String dumpValues() {
+        StringBuilder builder = new StringBuilder(getStructureName());
+        builder.append(" ID: ").append(id).append("\n");
+
+        for (AbstractStructureElement element : elements) {
+            builder.append("  ");
+            
+            builder.append(element.getName());
+            builder.append(": ");
+            
+            Object o = readStructure(element);
+            
+            switch (element.getElementType()) {
+                case BYTE_ARRAY:
+                    for (byte b : ((byte[]) o))
+                        builder.append(b).append(" ");
+                    break;
+                case UNDEFINED:
+                    for (byte b : ((Memory) o).getByteArray(0, (int) ((Memory) o).size()))
+                        builder.append(b).append(" ");
+                    builder.append("<- UNDEFINED");
+                    break;
+                default:
+                    builder.append(o);
+            }
+            
+            builder.append("\n");
+        }
+        
+        return builder.toString();
     }
 }

@@ -1,8 +1,12 @@
 package de.phoenixstaffel.dmw.api;
 
+import java.util.Arrays;
+import java.util.List;
+
 import de.phoenixstaffel.dmw.DigimonWorldAPI;
 import de.phoenixstaffel.dmw.api.world.PartnerDigimonEntity;
 import de.phoenixstaffel.dmw.core.CompoundStructure;
+import de.phoenixstaffel.dmw.core.Structure;
 
 public class PartnerDigimon extends CompoundStructure {
     private static final long START_PARTNER = 0xBAD148;
@@ -22,5 +26,10 @@ public class PartnerDigimon extends CompoundStructure {
     
     public PartnerValues getPartnerValues() {
         return values;
+    }
+
+    @Override
+    public List<Structure> getChildStructures() {
+        return Arrays.asList(entity, values);
     }
 }

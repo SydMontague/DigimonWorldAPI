@@ -6,6 +6,7 @@ import java.util.List;
 import de.phoenixstaffel.dmw.DigimonWorldAPI;
 import de.phoenixstaffel.dmw.api.world.InventorySlot;
 import de.phoenixstaffel.dmw.core.CompoundStructure;
+import de.phoenixstaffel.dmw.core.Structure;
 
 public class Inventory extends CompoundStructure {
     private static final int INVENTORY_SIZE = 30;
@@ -24,4 +25,8 @@ public class Inventory extends CompoundStructure {
         return slots;
     }
     
+    @Override
+    public List<Structure> getChildStructures() {
+        return new ArrayList<>(slots);
+    }
 }

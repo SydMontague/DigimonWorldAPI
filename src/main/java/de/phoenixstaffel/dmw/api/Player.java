@@ -1,7 +1,11 @@
 package de.phoenixstaffel.dmw.api;
 
+import java.util.Arrays;
+import java.util.List;
+
 import de.phoenixstaffel.dmw.DigimonWorldAPI;
 import de.phoenixstaffel.dmw.core.CompoundStructure;
+import de.phoenixstaffel.dmw.core.Structure;
 
 public class Player extends CompoundStructure {
     private static final long START_PLAYER = 0xBAD10C;
@@ -21,5 +25,10 @@ public class Player extends CompoundStructure {
     
     public Inventory getInventory() {
         return inventory;
+    }
+
+    @Override
+    public List<Structure> getChildStructures() {
+        return Arrays.asList(entity, inventory);
     }
 }

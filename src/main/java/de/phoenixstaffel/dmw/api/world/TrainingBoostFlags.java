@@ -1,4 +1,4 @@
-package de.phoenixstaffel.dmw.api;
+package de.phoenixstaffel.dmw.api.world;
 
 public class TrainingBoostFlags {
     private static final byte HP_FLAG = 0b00000001;

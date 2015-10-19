@@ -1,10 +1,9 @@
-package de.phoenixstaffel.dmw.api;
+package de.phoenixstaffel.dmw.api.world;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.phoenixstaffel.dmw.DigimonWorldAPI;
-import de.phoenixstaffel.dmw.api.world.InventorySlot;
 import de.phoenixstaffel.dmw.core.CompoundStructure;
 import de.phoenixstaffel.dmw.core.Structure;
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import de.phoenixstaffel.dmw.DigimonWorldAPI;
 import de.phoenixstaffel.dmw.api.world.PartnerDigimonEntity;
+import de.phoenixstaffel.dmw.api.world.PartnerValues;
 import de.phoenixstaffel.dmw.core.CompoundStructure;
 import de.phoenixstaffel.dmw.core.Structure;
 

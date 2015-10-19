@@ -44,7 +44,6 @@ public class DigimonWorldAPI {
     public DigimonWorldAPI() {
         emulator = new EPSXE190(this); // TODO detect emulator type and version
         pluginManager = new PluginManager(this);
-        eventManager.registerEvents(this);
         
         state = initState();
         

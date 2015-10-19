@@ -1,4 +1,4 @@
-package de.phoenixstaffel.dmw.api;
+package de.phoenixstaffel.dmw.api.world;
 
 public class DigimonConditions {
     private static final byte SLEEPY_MASK = 0b00000001;

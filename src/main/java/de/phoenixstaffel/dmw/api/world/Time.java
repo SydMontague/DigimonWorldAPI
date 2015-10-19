@@ -1,4 +1,4 @@
-package de.phoenixstaffel.dmw.api;
+package de.phoenixstaffel.dmw.api.world;
 
 import de.phoenixstaffel.dmw.DigimonWorldAPI;
 import de.phoenixstaffel.dmw.core.BaseStructure;

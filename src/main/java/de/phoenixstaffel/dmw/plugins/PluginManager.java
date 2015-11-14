@@ -33,6 +33,7 @@ public class PluginManager {
             }
             catch (Exception e) {
                 System.out.println("Error while loading " + file.getName() + ".jar.");
+                e.printStackTrace();
             }
         }
     }

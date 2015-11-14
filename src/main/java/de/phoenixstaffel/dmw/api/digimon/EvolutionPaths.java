@@ -33,7 +33,7 @@ public class EvolutionPaths extends BaseStructure {
         byte[] array = new byte[digimons.length];
         
         for (int i = 0; i < digimons.length; i++)
-            array[i] = (byte) digimons[i].getId();
+            array[i] = digimons[i] != null ? (byte) digimons[i].getId() : -1;
         
         setEvolveFrom(array);
     }
@@ -56,7 +56,7 @@ public class EvolutionPaths extends BaseStructure {
         byte[] array = new byte[digimons.length];
         
         for (int i = 0; i < digimons.length; i++)
-            array[i] = (byte) digimons[i].getId();
+            array[i] = digimons[i] != null ? (byte) digimons[i].getId() : -1;
         
         setEvolveTo(array);
     }

@@ -34,7 +34,7 @@ public class DigimonWorldAPI {
     private World world = new World(this);
     
     private GameState state = null;
-    private static boolean RUN = false;
+    private static boolean RUN = true;
     
     @SuppressWarnings("unused")
     public static void main(String[] args) {
@@ -43,6 +43,7 @@ public class DigimonWorldAPI {
     
     public DigimonWorldAPI() {
         emulator = new EPSXE190(this); // TODO detect emulator type and version
+        
         pluginManager = new PluginManager(this);
         
         state = initState();

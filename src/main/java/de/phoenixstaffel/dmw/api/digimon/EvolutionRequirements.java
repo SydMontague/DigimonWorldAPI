@@ -2,6 +2,7 @@ package de.phoenixstaffel.dmw.api.digimon;
 
 import de.phoenixstaffel.dmw.DigimonWorldAPI;
 import de.phoenixstaffel.dmw.api.Digimon;
+import de.phoenixstaffel.dmw.api.enums.Stats;
 import de.phoenixstaffel.dmw.core.BaseStructure;
 import de.phoenixstaffel.dmw.core.StructureElement;
 import de.phoenixstaffel.dmw.core.StructureElementType;
@@ -33,11 +34,11 @@ public class EvolutionRequirements extends BaseStructure {
     }
     
     public void setBonusDigimon(Digimon digimon) {
-        setBonusDigimon(digimon.getId());
+        setBonusDigimon(digimon != null ? digimon.getId() : -1);
     }
     
     public void setBonusDigimon(int id) {
-        writeStructure("BonusDigimon", id);
+        setBonusDigimon((short) id);
     }
     
     public short getHP() {
@@ -98,5 +99,96 @@ public class EvolutionRequirements extends BaseStructure {
     
     public boolean isMaxBattles() {
         return (getFlags() & 1) == 1;
+    }
+    
+    public void setBonusDigimon(short value) {
+        writeStructure("BonusDigimon", value);
+    }
+    
+    public void setHP(short value) {
+        writeStructure("HP", value);
+    }
+        
+    public void setMP(short value) {
+        writeStructure("MP", value);
+    }
+        
+    public void setOffense(short value) {
+        writeStructure("Offense", value);
+    }
+    
+    public void setDefense(short value) {
+        writeStructure("Defense", value);
+    }
+    
+    public void setSpeed(short value) {
+        writeStructure("Speed", value);
+    }
+    
+    public void setBrains(short value) {
+        writeStructure("Brains", value);
+    }
+    
+    public void setCare(short value) {
+        writeStructure("Care", value);
+    }
+    
+    public void setWeight(short value) {
+        writeStructure("Weight", value);
+    }
+    
+    public void setDiscipline(short value) {
+        writeStructure("Discipline", value);
+    }
+
+    public void setHappiness(short value) {
+        writeStructure("Happiness", value);
+    }
+    
+    public void setBattles(short value) {
+        writeStructure("Battles", value);
+    }
+    
+    public void setTechs(short value) {
+        writeStructure("Techs", value);
+    }
+    
+    public void setFlags(short value) {
+        writeStructure("Flags", value);
+    }
+
+    public void setMaxCareMistakes(boolean value) {
+        setFlags((short) (value ? getFlags() | 0x10 : getFlags() & 0xEF));
+    }
+    
+    public void setMaxBattles(boolean value) {
+        setFlags((short) (value ? getFlags() | 0x01 : getFlags() & 0xFE));
+    }
+    
+    public void setStats(Stats stats, short value)
+    {
+        switch(stats)
+        {
+            case HP: setHP(value); break;
+            case MP: setMP(value); break;
+            case OFFENSE: setOffense(value); break;
+            case DEFENSE: setDefense(value); break;
+            case SPEED: setSpeed(value); break;
+            case BRAINS: setBrains(value); break;
+        }
+    }
+    
+    public short getStats(Stats stats)
+    {
+        switch(stats)
+        {
+            case HP: return getHP();
+            case MP: return getMP();
+            case OFFENSE: return getOffense();
+            case DEFENSE: return getDefense();
+            case SPEED: return getSpeed();
+            case BRAINS: return getBrains();
+        }
+        return 0;
     }
 }

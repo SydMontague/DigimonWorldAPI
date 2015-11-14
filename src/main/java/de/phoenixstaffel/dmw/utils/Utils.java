@@ -42,7 +42,7 @@ public class Utils {
      * @param character the second (payload) byte of the character
      * @return The representing character as a String
      */
-    private static String getGameCharacter(byte value, byte character) {
+    public static String getGameCharacter(byte value, byte character) {
         switch (value) {
             case -126:
                 switch (character) {

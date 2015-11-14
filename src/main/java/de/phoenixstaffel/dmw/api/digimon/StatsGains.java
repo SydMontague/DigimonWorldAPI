@@ -50,7 +50,7 @@ public class StatsGains extends BaseStructure {
     }
     
     public void setDefense(short defense) {
-        writeStructure("HP", defense);
+        writeStructure("Defense", defense);
     }
     
     public short getSpeed() {

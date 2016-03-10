@@ -17,7 +17,7 @@ public class GeneralValues extends BaseStructure {
         addStructureElement(new StructureElement("Name", StructureElementType.STRING, NAME_LENGTH));
         addStructureElement(new StructureElement("ModelId", StructureElementType.INT));
         addStructureElement(new StructureElement("Radius", StructureElementType.SHORT));
-        addStructureElement(new StructureElement("Unknown1", StructureElementType.UNDEFINED, 2));
+        addStructureElement(new StructureElement("Height", StructureElementType.SHORT));
         addStructureElement(new StructureElement("Type", StructureElementType.BYTE));
         addStructureElement(new StructureElement("Level", StructureElementType.BYTE));
         addStructureElement(new StructureElement("Element1", StructureElementType.BYTE));
@@ -55,6 +55,14 @@ public class GeneralValues extends BaseStructure {
     
     public void setRadius(short radius) {
         writeStructure("Radius", radius);
+    }
+    
+    public short getHeight() {
+        return (short) readStructure("Height");
+    }
+    
+    public void setHeight(short height) {
+        writeStructure("Height", height);
     }
     
     public DigimonType getDigimonType() {

@@ -30,7 +30,7 @@ public class EvolutionRequirements extends BaseStructure {
     }
     
     public Digimon getBonusDigimon() {
-        return getMain().getDigimonManager().getDigimon((byte) readStructure("BonusDigimon"));
+        return getMain().getDigimonManager().getDigimon((short) readStructure("BonusDigimon"));
     }
     
     public void setBonusDigimon(Digimon digimon) {

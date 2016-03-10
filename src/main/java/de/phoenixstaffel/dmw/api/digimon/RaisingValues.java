@@ -17,14 +17,17 @@ public class RaisingValues extends BaseStructure {
         addStructureElement(new StructureElement("EnergyThreshold", StructureElementType.BYTE));
         addStructureElement(new StructureElement("EnergyUsage", StructureElementType.BYTE));
         addStructureElement(new StructureElement("Unknown1", StructureElementType.UNDEFINED, 1));
-        addStructureElement(new StructureElement("PoopTime", StructureElementType.BYTE));
-        addStructureElement(new StructureElement("Unknown2", StructureElementType.UNDEFINED, 3));
+        addStructureElement(new StructureElement("PoopTime", StructureElementType.SHORT));
+        addStructureElement(new StructureElement("Unknown2", StructureElementType.UNDEFINED, 2));
         addStructureElement(new StructureElement("PoopSize", StructureElementType.BYTE));
         addStructureElement(new StructureElement("FavoriteFood", StructureElementType.BYTE));
         addStructureElement(new StructureElement("SleepCycle", StructureElementType.BYTE));
-        addStructureElement(new StructureElement("Unknown3", StructureElementType.UNDEFINED, 1));
+        addStructureElement(new StructureElement("FavoredRegion", StructureElementType.BYTE));
         addStructureElement(new StructureElement("TrainingType", StructureElementType.BYTE));
-        addStructureElement(new StructureElement("Unknown4", StructureElementType.UNDEFINED, 7));
+        addStructureElement(new StructureElement("Default Weight", StructureElementType.BYTE));
+        addStructureElement(new StructureElement("ViewX", StructureElementType.SHORT));
+        addStructureElement(new StructureElement("ViewY", StructureElementType.SHORT));
+        addStructureElement(new StructureElement("ViewZ", StructureElementType.SHORT));
     }
     
     public RaisingValues(DigimonWorldAPI main, long baseAddress, int id) {
@@ -63,11 +66,11 @@ public class RaisingValues extends BaseStructure {
         writeStructure("EnergyUsage", usage);
     }
     
-    public byte getPoopTime() {
-        return (byte) readStructure("PoopTime");
+    public short getPoopTime() {
+        return (short) readStructure("PoopTime");
     }
     
-    public void setPoopTime(byte poopTime) {
+    public void setPoopTime(short poopTime) {
         writeStructure("PoopTime", poopTime);
     }
     
@@ -99,11 +102,52 @@ public class RaisingValues extends BaseStructure {
         writeStructure("SleepCycle", sleepCycle.getId());
     }
     
+    // TODO create FavoredRegion enum
+    public byte getFavoredRegion() {
+        return (byte) readStructure("FavoredRegion");
+    }
+    
+    public void setFavoredRegion(byte favoredRegion) {
+        writeStructure("FavoredRegion", favoredRegion);
+    }
+    
     public TrainingType getTrainingType() {
         return TrainingType.valueOf((byte) readStructure("TrainingType"));
     }
     
     public void setTrainingType(TrainingType trainingType) {
         writeStructure("TrainingType", trainingType.getId());
+    }
+    
+    public byte getDefaultWeight() {
+        return (byte) readStructure("DefaultWeight");
+    }
+    
+    public void setDefaultWeight(byte defaultWeight) {
+        writeStructure("DefaultWeight", defaultWeight);
+    }
+    
+    public byte getViewX() {
+        return (byte) readStructure("ViewX");
+    }
+    
+    public void setViewX(byte viewX) {
+        writeStructure("ViewX", viewX);
+    }
+    
+    public byte getViewY() {
+        return (byte) readStructure("ViewY");
+    }
+    
+    public void setViewY(byte viewY) {
+        writeStructure("ViewY", viewY);
+    }
+    
+    public byte getViewZ() {
+        return (byte) readStructure("ViewZ");
+    }
+    
+    public void setViewZ(byte viewZ) {
+        writeStructure("ViewZ", viewZ);
     }
 }

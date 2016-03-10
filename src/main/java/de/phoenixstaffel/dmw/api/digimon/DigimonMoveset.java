@@ -53,7 +53,7 @@ public class DigimonMoveset extends BaseStructure {
     }
     
     public Move getMove(byte move) {
-        if (move < 0 || move > MOVES_LENGHT)
+        if (move < 0 || move >= MOVES_LENGHT)
             return null;
         
         return getMain().getMovesManager().getMove(((byte[]) readStructure("Moves"))[move]);
@@ -72,6 +72,9 @@ public class DigimonMoveset extends BaseStructure {
     public Move getFinisher() {
         for (byte i = MOVES_LENGHT; i > 0; i--) {
             Move move = getMove(i);
+            
+            if (move == null)
+                continue;
             
             if (move.isFinisher())
                 return move;

@@ -18,7 +18,9 @@ public class PartnerValues extends BaseStructure {
         addStructureElement(new StructureElement("Unknown3", StructureElementType.UNDEFINED, 4));
         addStructureElement(new StructureElement("Discipline", StructureElementType.SHORT));
         addStructureElement(new StructureElement("Happiness", StructureElementType.SHORT));
-        addStructureElement(new StructureElement("Unknown4", StructureElementType.UNDEFINED, 16));
+        addStructureElement(new StructureElement("Unknown4", StructureElementType.UNDEFINED, 10));
+        addStructureElement(new StructureElement("SicknessTimer", StructureElementType.SHORT));
+        addStructureElement(new StructureElement("Unknown10", StructureElementType.UNDEFINED, 4));        
         addStructureElement(new StructureElement("EnergyLevel", StructureElementType.SHORT));
         addStructureElement(new StructureElement("FoodLevel", StructureElementType.SHORT));
         addStructureElement(new StructureElement("StarvationTimer", StructureElementType.SHORT));
@@ -110,6 +112,14 @@ public class PartnerValues extends BaseStructure {
     
     public void setHappiness(short value) {
         writeStructure("Happiness", value);
+    }
+
+    public short getSicknessTimer() {
+        return (short) readStructure("SicknessTimer");
+    }
+    
+    public void setSicknessTimer(short value) {
+        writeStructure("SicknessTimer", value);
     }
     
     public short getEnergyLevel() {

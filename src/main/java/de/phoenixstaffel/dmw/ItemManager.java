@@ -9,6 +9,7 @@ public class ItemManager {
     
     private static final long BASE_ADDRESS = 0xB7E37C;
     private static final long DESC_ADDRESS = 0xB7F37C;
+    //TODO add item effects
     private static final int ITEM_COUNT = 128;
     private List<Item> itemList = new ArrayList<>();
     

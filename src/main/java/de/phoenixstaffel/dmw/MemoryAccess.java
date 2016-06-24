@@ -39,7 +39,11 @@ public class MemoryAccess {
     private int pid;
     private HANDLE process;
     
-    public MemoryAccess() {
+    private long offset;
+    
+    public MemoryAccess(long offset) {
+        this.offset = offset;
+        
         IntByReference value = new IntByReference(0);
         user.GetWindowThreadProcessId(user.FindWindowA(null, "ePSXe - Enhanced PSX emulator"), value);
         pid = value.getValue();
@@ -53,6 +57,7 @@ public class MemoryAccess {
     }
     
     public byte readByte(long address) {
+        address += offset;
         Memory memory = new Memory(BYTE_SIZE);
         kernel.ReadProcessMemory(process, new Pointer(address), memory, BYTE_SIZE, null);
         
@@ -60,6 +65,7 @@ public class MemoryAccess {
     }
     
     public short readShort(long address) {
+        address += offset;
         Memory memory = new Memory(SHORT_SIZE);
         kernel.ReadProcessMemory(process, new Pointer(address), memory, SHORT_SIZE, null);
         
@@ -67,6 +73,7 @@ public class MemoryAccess {
     }
     
     public int readInteger(long address) {
+        address += offset;
         Memory memory = new Memory(INT_SIZE);
         kernel.ReadProcessMemory(process, new Pointer(address), memory, INT_SIZE, null);
         
@@ -74,6 +81,7 @@ public class MemoryAccess {
     }
     
     public long readLong(long address) {
+        address += offset;
         Memory memory = new Memory(LONG_SIZE);
         kernel.ReadProcessMemory(process, new Pointer(address), memory, LONG_SIZE, null);
         
@@ -81,6 +89,7 @@ public class MemoryAccess {
     }
     
     public String readString(long address, int lenght) {
+        address += offset;
         Memory memory = new Memory(lenght);
         kernel.ReadProcessMemory(process, new Pointer(address), memory, lenght, null);
         
@@ -88,6 +97,7 @@ public class MemoryAccess {
     }
     
     public List<String> readStringArray(long address, int lenght) {
+        address += offset;
         Memory memory = new Memory(lenght);
         kernel.ReadProcessMemory(process, new Pointer(address), memory, lenght, null);
         
@@ -111,36 +121,42 @@ public class MemoryAccess {
     }
     
     public void writeByte(long address, byte value) {
+        address += offset;
         Memory memory = new Memory(BYTE_SIZE);
         memory.setByte(0, value);
         kernel.WriteProcessMemory(process, new Pointer(address), memory, BYTE_SIZE, null);
     }
     
     public void writeShort(long address, short value) {
+        address += offset;
         Memory memory = new Memory(SHORT_SIZE);
         memory.setShort(0, value);
         kernel.WriteProcessMemory(process, new Pointer(address), memory, SHORT_SIZE, null);
     }
     
     public void writeInteger(long address, int value) {
+        address += offset;
         Memory memory = new Memory(INT_SIZE);
         memory.setInt(0, value);
         kernel.WriteProcessMemory(process, new Pointer(address), memory, INT_SIZE, null);
     }
     
     public void writeLong(long address, long value) {
+        address += offset;
         Memory memory = new Memory(LONG_SIZE);
         memory.setLong(0, value);
         kernel.WriteProcessMemory(process, new Pointer(address), memory, LONG_SIZE, null);
     }
     
     public void writeString(long address, String string) {
+        address += offset;
         Memory memory = new Memory(string.length());
         memory.setString(0, string);
         kernel.WriteProcessMemory(process, new Pointer(address), memory, string.length(), null);
     }
     
     public Object read(long address, AbstractStructureElement element) {
+        address += offset;
         Memory memory = new Memory(element.getSize());
         kernel.ReadProcessMemory(process, new Pointer(address), memory, element.getSize(), null);
         
@@ -167,6 +183,7 @@ public class MemoryAccess {
     }
     
     public void write(long address, AbstractStructureElement element, Object value) {
+        address += offset;
         Memory memory = new Memory(element.getSize());
         
         switch (element.getElementType()) {

@@ -10,7 +10,6 @@ import de.phoenixstaffel.dmw.MemoryAccess;
 
 public abstract class BaseStructure implements Structure {
     private final DigimonWorldAPI main;
-    private final MemoryAccess memory;
     private final int id;
     private final long baseAddress;
     private final List<AbstractStructureElement> elements = new ArrayList<>();
@@ -19,7 +18,6 @@ public abstract class BaseStructure implements Structure {
         this.baseAddress = baseAddress;
         this.id = id;
         this.main = main;
-        memory = main != null ? main.getMemoryAccess() : null;
     }
     
     public BaseStructure(DigimonWorldAPI main, long baseAddress) {
@@ -78,7 +76,7 @@ public abstract class BaseStructure implements Structure {
                 offset += localElement.getSize();
             }
         
-        return memory.read(getBaseAddress() + offset, element);
+        return main.getMemoryAccess().read(getBaseAddress() + offset, element);
     }
     
     protected void writeStructure(String name, Object value) {
@@ -102,7 +100,7 @@ public abstract class BaseStructure implements Structure {
             offset += localElement.getSize();
         }
         
-        memory.write(getBaseAddress() + offset, element, value);
+        main.getMemoryAccess().write(getBaseAddress() + offset, element, value);
     }
     
     /**

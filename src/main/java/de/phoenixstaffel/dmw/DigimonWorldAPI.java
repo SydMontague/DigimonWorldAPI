@@ -1,7 +1,10 @@
 package de.phoenixstaffel.dmw;
 
+import java.util.Random;
+
 import de.phoenixstaffel.dmw.api.ActiveMap;
 import de.phoenixstaffel.dmw.api.World;
+import de.phoenixstaffel.dmw.emulator.EPSXE170;
 import de.phoenixstaffel.dmw.emulator.EPSXE190;
 import de.phoenixstaffel.dmw.emulator.Emulator;
 import de.phoenixstaffel.dmw.events.EventManager;
@@ -9,7 +12,6 @@ import de.phoenixstaffel.dmw.plugins.PluginManager;
 
 /*
  * TODO let randomiser start the emulator?
- * TODO create "Digimon World API" module
  */
 public class DigimonWorldAPI {
     private static long SLEEP_TIME = 10L;
@@ -17,21 +19,21 @@ public class DigimonWorldAPI {
     /**
      * Used for new game check. It's set to 1 at reset and set to 0 once you press new game.
      */
-    private static long BACK_DIMENSION_TIMER = 0xC159ED;
-    private static long MAX_HP = 0xBAD190;
+    private static final long BACK_DIMENSION_TIMER = 0xC159ED;
+    private static final long MAX_HP = 0xBAD190;
     
-    private MemoryAccess manager = new MemoryAccess();
-    private Emulator emulator;
+    private final MemoryAccess manager;
+    private final Emulator emulator;
     
-    private EventManager eventManager = new EventManager();
-    private PluginManager pluginManager;
+    private final EventManager eventManager;
+    private final PluginManager pluginManager;
     
-    private ItemManager itemManager = new ItemManager(this);
-    private MovesManager moveManager = new MovesManager(this);
-    private DigimonManager digimonManager = new DigimonManager(this);
+    private final ItemManager itemManager;
+    private final MovesManager moveManager;
+    private final DigimonManager digimonManager;
     
-    private ActiveMap map = new ActiveMap(this);
-    private World world = new World(this);
+    private final ActiveMap map;
+    private final World world;
     
     private GameState state = null;
     private static boolean RUN = true;
@@ -42,10 +44,22 @@ public class DigimonWorldAPI {
     }
     
     public DigimonWorldAPI() {
-        emulator = new EPSXE190(this); // TODO detect emulator type and version
+        emulator = new EPSXE170(this); // TODO detect emulator type and version
+        manager = new MemoryAccess(emulator.getMemoryOffset());
         
+        eventManager = new EventManager();
         pluginManager = new PluginManager(this);
         
+        itemManager = new ItemManager(this);
+        moveManager = new MovesManager(this);
+        digimonManager = new DigimonManager(this);
+        
+        map = new ActiveMap(this);
+        world = new World(this);
+
+        
+        Random r = new Random();
+            
         state = initState();
         
         while (RUN)

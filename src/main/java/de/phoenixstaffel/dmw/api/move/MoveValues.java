@@ -10,6 +10,7 @@ import de.phoenixstaffel.dmw.core.StructureElementType;
 
 public class MoveValues extends BaseStructure {
     {
+        addStructureElement(new StructureElement("Unknown1", StructureElementType.UNDEFINED, 4));
         addStructureElement(new StructureElement("Power", StructureElementType.SHORT));
         addStructureElement(new StructureElement("MP", StructureElementType.BYTE));
         addStructureElement(new StructureElement("InvincibleTime", StructureElementType.BYTE));
@@ -18,7 +19,7 @@ public class MoveValues extends BaseStructure {
         addStructureElement(new StructureElement("Effect", StructureElementType.BYTE));
         addStructureElement(new StructureElement("BlockingFactor", StructureElementType.BYTE));
         addStructureElement(new StructureElement("EffectChance", StructureElementType.BYTE));
-        addStructureElement(new StructureElement("Unknown", StructureElementType.UNDEFINED, 7));
+        addStructureElement(new StructureElement("Unknown2", StructureElementType.UNDEFINED, 3));
     }
     
     public MoveValues(DigimonWorldAPI main, long baseAddress, int id) {

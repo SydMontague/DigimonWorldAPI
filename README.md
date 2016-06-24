@@ -7,7 +7,7 @@ The current code isn't exactly nice and more or less a prototype/proof of concep
 ## Goal of the Project
 By creating an abstraction layer on top of the emulated game, this project shall enable developers to create plugins and mods for the PS1 game "Digimon World".
 
-The initial idea was to create a randomiser that can be used by speedrunner and casual players alike to create new experiences and challenges, 
+The initial idea was to create a randomiser that can be used by speedrunners and casual players alike to create new experiences and challenges, 
 by making knowledge of certain values useless and enabling the player to explore the game a bit like when they played it the first time.
 And this idea will continue to be the leading focus of this project.
 

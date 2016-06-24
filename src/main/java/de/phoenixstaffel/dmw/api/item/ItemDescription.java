@@ -16,7 +16,11 @@ public class ItemDescription extends BaseStructure {
         super(main, baseAddress, id);
     }
     
-    public StringPointer getDescription() {
+    public String getDescription() {
+        return getDescriptionPointer().getContent();
+    }
+    
+    public StringPointer getDescriptionPointer() {
         return (StringPointer) readStructure("Description");
     }
     

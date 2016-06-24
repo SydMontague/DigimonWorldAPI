@@ -12,7 +12,7 @@ import de.phoenixstaffel.dmw.core.Structure;
 
 public class Move extends CompoundStructure {
     private static final long NAME = 0xB7D9F4;
-    private static final long GENERAL_VALUES = 0xB7DBE0;
+    private static final long GENERAL_VALUES = 0xB7DBDC;
     private static final long LEARNING_CHANCE = 0xB7D944;
     
     private static final int FINISHER_THRESHOLD = 58;

@@ -1,20 +1,20 @@
 package de.phoenixstaffel.dmw.api.enums;
 
 public enum StatusEffect {
-    UNDEFINED(5),
-    NONE(0),
-    POISON(1),
-    CONFUSE(2),
-    STUN(3),
-    FLAT(4);
-
-    private int id;
+    UNDEFINED((byte) 5),
+    NONE((byte) 0),
+    POISON((byte) 1),
+    CONFUSE((byte) 2),
+    STUN((byte) 3),
+    FLAT((byte) 4);
     
-    private StatusEffect(int id) {
+    private byte id;
+    
+    private StatusEffect(byte id) {
         this.id = id;
     }
     
-    public int getId() {
+    public byte getId() {
         return id;
     }
     

@@ -29,6 +29,35 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.10</version>
+        <executions>
+          <execution>
+            <id>copy</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>net.java.dev.jna</groupId>
+                  <artifactId>jna-platform</artifactId>
+                  <version>4.1.0</version>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>net.java.dev.jna</groupId>
+                  <artifactId>jna</artifactId>
+                  <version>4.1.0</version>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>

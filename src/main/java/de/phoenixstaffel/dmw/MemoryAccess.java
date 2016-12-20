@@ -22,14 +22,9 @@ import de.phoenixstaffel.dmw.utils.Utils;
  * TODO update to allow the use of in-memory pointer, either by own functions or by automatic detection
  */
 public class MemoryAccess {
-    private static int BYTE_SIZE = 1;
-    private static int SHORT_SIZE = 2;
-    private static int INT_SIZE = 4;
-    private static int LONG_SIZE = 8;
-    
-    private static int PROCESS_VM_READ = 0x0010;
-    private static int PROCESS_VM_WRITE = 0x0020;
-    private static int PROCESS_VM_OPERATION = 0x0008;
+    private static final int PROCESS_VM_READ = 0x0010;
+    private static final int PROCESS_VM_WRITE = 0x0020;
+    private static final int PROCESS_VM_OPERATION = 0x0008;
     
     private static long BASE_ADDRESS = 0xA579A0;
     
@@ -58,32 +53,32 @@ public class MemoryAccess {
     
     public byte readByte(long address) {
         address += offset;
-        Memory memory = new Memory(BYTE_SIZE);
-        kernel.ReadProcessMemory(process, new Pointer(address), memory, BYTE_SIZE, null);
+        Memory memory = new Memory(Byte.BYTES);
+        kernel.ReadProcessMemory(process, new Pointer(address), memory, Byte.BYTES, null);
         
         return memory.getByte(0);
     }
     
     public short readShort(long address) {
         address += offset;
-        Memory memory = new Memory(SHORT_SIZE);
-        kernel.ReadProcessMemory(process, new Pointer(address), memory, SHORT_SIZE, null);
+        Memory memory = new Memory(Short.BYTES);
+        kernel.ReadProcessMemory(process, new Pointer(address), memory, Short.BYTES, null);
         
         return memory.getShort(0);
     }
     
     public int readInteger(long address) {
         address += offset;
-        Memory memory = new Memory(INT_SIZE);
-        kernel.ReadProcessMemory(process, new Pointer(address), memory, INT_SIZE, null);
+        Memory memory = new Memory(Integer.BYTES);
+        kernel.ReadProcessMemory(process, new Pointer(address), memory, Integer.BYTES, null);
         
         return memory.getInt(0);
     }
     
     public long readLong(long address) {
         address += offset;
-        Memory memory = new Memory(LONG_SIZE);
-        kernel.ReadProcessMemory(process, new Pointer(address), memory, LONG_SIZE, null);
+        Memory memory = new Memory(Long.BYTES);
+        kernel.ReadProcessMemory(process, new Pointer(address), memory, Long.BYTES, null);
         
         return memory.getLong(0);
     }
@@ -122,30 +117,30 @@ public class MemoryAccess {
     
     public void writeByte(long address, byte value) {
         address += offset;
-        Memory memory = new Memory(BYTE_SIZE);
+        Memory memory = new Memory(Byte.BYTES);
         memory.setByte(0, value);
-        kernel.WriteProcessMemory(process, new Pointer(address), memory, BYTE_SIZE, null);
+        kernel.WriteProcessMemory(process, new Pointer(address), memory, Byte.BYTES, null);
     }
     
     public void writeShort(long address, short value) {
         address += offset;
-        Memory memory = new Memory(SHORT_SIZE);
+        Memory memory = new Memory(Short.BYTES);
         memory.setShort(0, value);
-        kernel.WriteProcessMemory(process, new Pointer(address), memory, SHORT_SIZE, null);
+        kernel.WriteProcessMemory(process, new Pointer(address), memory, Short.BYTES, null);
     }
     
     public void writeInteger(long address, int value) {
         address += offset;
-        Memory memory = new Memory(INT_SIZE);
+        Memory memory = new Memory(Integer.BYTES);
         memory.setInt(0, value);
-        kernel.WriteProcessMemory(process, new Pointer(address), memory, INT_SIZE, null);
+        kernel.WriteProcessMemory(process, new Pointer(address), memory, Integer.BYTES, null);
     }
     
     public void writeLong(long address, long value) {
         address += offset;
-        Memory memory = new Memory(LONG_SIZE);
+        Memory memory = new Memory(Long.BYTES);
         memory.setLong(0, value);
-        kernel.WriteProcessMemory(process, new Pointer(address), memory, LONG_SIZE, null);
+        kernel.WriteProcessMemory(process, new Pointer(address), memory, Long.BYTES, null);
     }
     
     public void writeString(long address, String string) {

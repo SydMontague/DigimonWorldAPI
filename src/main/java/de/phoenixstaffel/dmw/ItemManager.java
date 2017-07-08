@@ -19,7 +19,7 @@ public class ItemManager {
     }
     
     public Item getItem(byte id) {
-        return itemList.size() >= id && id > 0 ? itemList.get(id) : null;
+        return itemList.size() > id && id >= 0 ? itemList.get(id) : null;
     }
     
     public Item getItem(String name) {

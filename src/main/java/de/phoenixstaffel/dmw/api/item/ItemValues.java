@@ -65,7 +65,7 @@ public class ItemValues extends BaseStructure {
     }
     
     public boolean isDropable() {
-        return (int) readStructure("Dropable") == 1;
+        return (byte) readStructure("Dropable") == 1;
     }
     
     public void setDropable(boolean dropable) {

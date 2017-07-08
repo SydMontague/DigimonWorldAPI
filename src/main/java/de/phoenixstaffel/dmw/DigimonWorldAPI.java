@@ -48,7 +48,6 @@ public class DigimonWorldAPI {
         manager = new MemoryAccess(emulator.getMemoryOffset());
         
         eventManager = new EventManager();
-        pluginManager = new PluginManager(this);
         
         itemManager = new ItemManager(this);
         moveManager = new MovesManager(this);
@@ -56,11 +55,12 @@ public class DigimonWorldAPI {
         
         map = new ActiveMap(this);
         world = new World(this);
-
         
         Random r = new Random();
-            
+        
         state = initState();
+        
+        pluginManager = new PluginManager(this);
         
         while (RUN)
             run();

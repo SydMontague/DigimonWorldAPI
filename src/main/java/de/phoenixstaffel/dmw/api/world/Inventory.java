@@ -17,7 +17,7 @@ public class Inventory extends CompoundStructure {
     }
     
     public InventorySlot getInventorySlot(int id) {
-        return slots.size() < id && id > 0 ? slots.get(id) : null;
+        return slots.size() > id && id >= 0 ? slots.get(id) : null;
     }
     
     public List<InventorySlot> getInventorySlots() {

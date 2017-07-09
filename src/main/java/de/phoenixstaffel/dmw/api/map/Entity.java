@@ -28,7 +28,7 @@ public class Entity extends BaseStructure {
     }
     
     public Digimon getDigimon() {
-        return getMain().getDigimonManager().getDigimon((short) readStructure("DigimonType"));
+        return getMain().getDigimonManager().getDigimon((short) (int) readStructure("DigimonType"));
     }
     
     public void setDigimon(Digimon digimon) {

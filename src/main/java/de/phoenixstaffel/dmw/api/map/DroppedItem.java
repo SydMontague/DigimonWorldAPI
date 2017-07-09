@@ -23,7 +23,7 @@ public class DroppedItem extends BaseStructure {
     }
     
     public Item getItem() {
-        return getMain().getItemManager().getItem((byte) readStructure("Type"));
+        return getMain().getItemManager().getItem((byte) (int) readStructure("Type"));
     }
     
     public void setItem(Item item) {

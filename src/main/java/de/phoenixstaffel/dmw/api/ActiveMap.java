@@ -8,7 +8,7 @@ public class ActiveMap {
     
     private static final long START_DIGIMON = 0xBAD1C8;
     private static final int DIGIMON_COUNT = 8;
-    private static final long START_DROPPED_ITEM = 0xB94E88;
+    private static final long START_DROPPED_ITEM = 0xB94E80;
     private static final int DROPPED_ITEM_COUNT = 11;
     
     private DigimonEncounter[] digimons = new DigimonEncounter[DIGIMON_COUNT];

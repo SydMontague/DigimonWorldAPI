@@ -13,10 +13,10 @@ public class DigimonEncounter extends Entity {
         addStructureElement(new StructureElement("Speed", StructureElementType.SHORT));
         addStructureElement(new StructureElement("Brains", StructureElementType.SHORT));
         addStructureElement(new StructureElement("Undefined4", StructureElementType.UNDEFINED, 4));
-        addStructureElement(new StructureElement("Move 1", StructureElementType.BYTE));
-        addStructureElement(new StructureElement("Move 2", StructureElementType.BYTE));
-        addStructureElement(new StructureElement("Move 3", StructureElementType.BYTE));
-        addStructureElement(new StructureElement("Move 4", StructureElementType.BYTE));
+        addStructureElement(new StructureElement("Move1", StructureElementType.BYTE));
+        addStructureElement(new StructureElement("Move2", StructureElementType.BYTE));
+        addStructureElement(new StructureElement("Move3", StructureElementType.BYTE));
+        addStructureElement(new StructureElement("Move4", StructureElementType.BYTE));
         addStructureElement(new StructureElement("MaxHP", StructureElementType.SHORT));
         addStructureElement(new StructureElement("MaxMP", StructureElementType.SHORT));
         addStructureElement(new StructureElement("CurrentHP", StructureElementType.SHORT));

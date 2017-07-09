@@ -89,7 +89,7 @@ public class DigimonEncounter extends Entity {
     }
     
     public short getCurrentMP() {
-        return (short) readStructure("CurrenMP");
+        return (short) readStructure("CurrentMP");
     }
     
     public void setCurrentMP(short mp) {

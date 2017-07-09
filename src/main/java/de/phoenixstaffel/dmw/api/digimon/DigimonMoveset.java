@@ -9,7 +9,7 @@ import de.phoenixstaffel.dmw.core.StructureElement;
 import de.phoenixstaffel.dmw.core.StructureElementType;
 
 public class DigimonMoveset extends BaseStructure {
-    private static final byte MOVES_LENGHT = 16;
+    public static final byte MOVES_LENGHT = 16;
     
     {
         addStructureElement(new StructureElement("Moves", StructureElementType.BYTE_ARRAY, MOVES_LENGHT));

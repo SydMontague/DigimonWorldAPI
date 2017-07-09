@@ -2,10 +2,13 @@ package de.phoenixstaffel.dmw.api.map;
 
 import de.phoenixstaffel.dmw.DigimonWorldAPI;
 import de.phoenixstaffel.dmw.api.Move;
+import de.phoenixstaffel.dmw.api.digimon.DigimonMoveset;
 import de.phoenixstaffel.dmw.core.StructureElement;
 import de.phoenixstaffel.dmw.core.StructureElementType;
 
 public class DigimonEncounter extends Entity {
+    
+    private static final byte MOVE_OFFSET = 46;
     
     {
         addStructureElement(new StructureElement("Offense", StructureElementType.SHORT));
@@ -97,51 +100,59 @@ public class DigimonEncounter extends Entity {
     }
     
     public Move getFirstMove() {
-        return getMain().getMovesManager().getMove((byte) readStructure("Move1"));
+        return getDigimon().getMoveset().getMove((byte) (((byte) readStructure("Move1")) - MOVE_OFFSET));
     }
     
     public void setFirstMove(Move move) {
-        setFirstMove((byte) move.getId());
-    }
-    
-    public void setFirstMove(byte move) {
-        writeStructure("Move1", move);
+        byte id = -1;
+        
+        for (byte i = 0; i < DigimonMoveset.MOVES_LENGHT; i++)
+            if (getDigimon().getMoveset().getMove(i) == move)
+                id = (byte) (i + MOVE_OFFSET);
+            
+        writeStructure("Move1", id);
     }
     
     public Move getSecondMove() {
-        return getMain().getMovesManager().getMove((byte) readStructure("Move2"));
+        return getDigimon().getMoveset().getMove((byte) (((byte) readStructure("Move2")) - MOVE_OFFSET));
     }
     
     public void setSecondMove(Move move) {
-        setFirstMove((byte) move.getId());
-    }
-    
-    public void setSecondMove(byte move) {
-        writeStructure("Move2", move);
+        byte id = -1;
+        
+        for (byte i = 0; i < DigimonMoveset.MOVES_LENGHT; i++)
+            if (getDigimon().getMoveset().getMove(i) == move)
+                id = (byte) (i + MOVE_OFFSET);
+            
+        writeStructure("Move2", id);
     }
     
     public Move getThirdMove() {
-        return getMain().getMovesManager().getMove((byte) readStructure("Move3"));
+        return getDigimon().getMoveset().getMove((byte) (((byte) readStructure("Move3")) - MOVE_OFFSET));
     }
     
     public void setThirdMove(Move move) {
-        setFirstMove((byte) move.getId());
-    }
-    
-    public void setThirdMove(byte move) {
-        writeStructure("Move3", move);
+        byte id = -1;
+        
+        for (byte i = 0; i < DigimonMoveset.MOVES_LENGHT; i++)
+            if (getDigimon().getMoveset().getMove(i) == move)
+                id = (byte) (i + MOVE_OFFSET);
+            
+        writeStructure("Move3", id);
     }
     
     public Move getFourthMove() {
-        return getMain().getMovesManager().getMove((byte) readStructure("Move4"));
+        return getDigimon().getMoveset().getMove((byte) (((byte) readStructure("Move4")) - MOVE_OFFSET));
     }
     
-    public void setFourthMove(Move move) {
-        setFirstMove((byte) move.getId());
-    }
-    
-    public void setFourthMove(byte move) {
-        writeStructure("Move4", move);
+    public void setForthMove(Move move) {
+        byte id = -1;
+        
+        for (byte i = 0; i < DigimonMoveset.MOVES_LENGHT; i++)
+            if (getDigimon().getMoveset().getMove(i) == move)
+                id = (byte) (i + MOVE_OFFSET);
+            
+        writeStructure("Move4", id);
     }
     
     public short getBits() {

@@ -45,7 +45,7 @@ public class DigimonWorldAPI {
     
     public DigimonWorldAPI() {
         emulator = new EPSXE170(this); // TODO detect emulator type and version
-        manager = new MemoryAccess(emulator.getMemoryOffset());
+        manager = new MemoryAccess(emulator.getWindowName(), emulator.getMemoryOffset());
         
         eventManager = new EventManager();
         

@@ -36,12 +36,15 @@ public class MemoryAccess {
     
     private long offset;
     
-    public MemoryAccess(long offset) {
+    public MemoryAccess(String windowName, long offset) {
         this.offset = offset;
         
         IntByReference value = new IntByReference(0);
-        user.GetWindowThreadProcessId(user.FindWindowA(null, "ePSXe - Enhanced PSX emulator"), value);
+        user.GetWindowThreadProcessId(user.FindWindowA(null, windowName), value);
         pid = value.getValue();
+        
+        if(pid == 0)
+            throw new IllegalArgumentException("Process not found.");
         
         process = kernel.OpenProcess(PROCESS_VM_READ | PROCESS_VM_WRITE | PROCESS_VM_OPERATION, false, pid);
     }

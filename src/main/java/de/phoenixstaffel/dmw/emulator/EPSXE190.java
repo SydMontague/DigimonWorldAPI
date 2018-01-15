@@ -5,6 +5,7 @@ import de.phoenixstaffel.dmw.DigimonWorldAPI;
 public class EPSXE190 implements Emulator {
     private static final long INPUT_SETTINGS = 0x004E2DF8;
     private static final long OUTPUT_START = 0x004F5100;
+    private static final String WINDOW_NAME = "ePSXe - Enhanced PSX emulator";
     
     private DigimonWorldAPI main;
     private EPSXEInputSettings input;
@@ -22,6 +23,11 @@ public class EPSXE190 implements Emulator {
     @Override
     public String getVersion() {
         return "1.9.0";
+    }
+    
+    @Override
+    public String getWindowName() {
+        return WINDOW_NAME;
     }
     
     @Override

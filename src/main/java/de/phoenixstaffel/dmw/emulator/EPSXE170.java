@@ -5,6 +5,7 @@ import de.phoenixstaffel.dmw.DigimonWorldAPI;
 public class EPSXE170 implements Emulator {
     private static final long INPUT_SETTINGS = 0x004BDB70;
     private static final long OUTPUT_START = 0x0050F0D0;
+    private static final String WINDOW_NAME = "ePSXe - Enhanced PSX emulator";
     
     private DigimonWorldAPI main;
     private EPSXEInputSettings input;
@@ -27,6 +28,11 @@ public class EPSXE170 implements Emulator {
     @Override
     public long getMemoryOffset() {
         return -0x10B980;
+    }
+    
+    @Override
+    public String getWindowName() {
+        return WINDOW_NAME;
     }
     
     @Override

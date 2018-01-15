@@ -41,7 +41,7 @@ public class PSXfin113 implements Emulator {
     
     @Override
     public boolean getButtonState(PSXControllerButton button) {
-        throw new UnsupportedOperationException(); // TODO implement
+        return main.getButtons().getButtonState(button);
     }
     
 }

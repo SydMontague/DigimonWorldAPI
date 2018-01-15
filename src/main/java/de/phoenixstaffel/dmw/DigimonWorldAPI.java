@@ -4,8 +4,8 @@ import java.util.Random;
 
 import de.phoenixstaffel.dmw.api.ActiveMap;
 import de.phoenixstaffel.dmw.api.World;
+import de.phoenixstaffel.dmw.api.world.Buttons;
 import de.phoenixstaffel.dmw.emulator.EPSXE170;
-import de.phoenixstaffel.dmw.emulator.EPSXE190;
 import de.phoenixstaffel.dmw.emulator.Emulator;
 import de.phoenixstaffel.dmw.events.EventManager;
 import de.phoenixstaffel.dmw.plugins.PluginManager;
@@ -34,6 +34,7 @@ public class DigimonWorldAPI {
     
     private final ActiveMap map;
     private final World world;
+    private final Buttons buttons;
     
     private GameState state = null;
     private static boolean RUN = true;
@@ -52,6 +53,7 @@ public class DigimonWorldAPI {
         itemManager = new ItemManager(this);
         moveManager = new MovesManager(this);
         digimonManager = new DigimonManager(this);
+        buttons = new Buttons(this);
         
         map = new ActiveMap(this);
         world = new World(this);
@@ -125,5 +127,9 @@ public class DigimonWorldAPI {
     
     public PluginManager getPluginManager() {
         return pluginManager;
+    }
+
+    public Buttons getButtons() {
+        return buttons;
     }
 }

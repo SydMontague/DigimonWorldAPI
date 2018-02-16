@@ -5,8 +5,9 @@ import java.util.Random;
 import de.phoenixstaffel.dmw.api.ActiveMap;
 import de.phoenixstaffel.dmw.api.World;
 import de.phoenixstaffel.dmw.api.world.Buttons;
-import de.phoenixstaffel.dmw.emulator.EPSXE170;
+import de.phoenixstaffel.dmw.api.world.Triggers;
 import de.phoenixstaffel.dmw.emulator.Emulator;
+import de.phoenixstaffel.dmw.emulator.PSXfin113;
 import de.phoenixstaffel.dmw.events.EventManager;
 import de.phoenixstaffel.dmw.plugins.PluginManager;
 
@@ -35,6 +36,7 @@ public class DigimonWorldAPI {
     private final ActiveMap map;
     private final World world;
     private final Buttons buttons;
+    private final Triggers triggers;
     
     private GameState state = null;
     private static boolean RUN = true;
@@ -45,7 +47,7 @@ public class DigimonWorldAPI {
     }
     
     public DigimonWorldAPI() {
-        emulator = new EPSXE170(this); // TODO detect emulator type and version
+        emulator = new PSXfin113(this); // TODO detect emulator type and version
         manager = new MemoryAccess(emulator.getWindowName(), emulator.getMemoryOffset());
         
         eventManager = new EventManager();
@@ -54,6 +56,7 @@ public class DigimonWorldAPI {
         moveManager = new MovesManager(this);
         digimonManager = new DigimonManager(this);
         buttons = new Buttons(this);
+        triggers = new Triggers(this);
         
         map = new ActiveMap(this);
         world = new World(this);
@@ -64,8 +67,11 @@ public class DigimonWorldAPI {
         
         pluginManager = new PluginManager(this);
         
-        while (RUN)
-            run();
+        System.out.println(world.getPartner().getEntity().getCurrentHP());
+        System.out.println(world.getPartner().getEntity().getName());
+        System.out.println(manager.readString(0xBAD1B0, 10));
+        //while (RUN)
+        //    run();
     }
     
     private void run() {

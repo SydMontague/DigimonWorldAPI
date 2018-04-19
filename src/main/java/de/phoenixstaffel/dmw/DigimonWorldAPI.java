@@ -67,11 +67,8 @@ public class DigimonWorldAPI {
         
         pluginManager = new PluginManager(this);
         
-        System.out.println(world.getPartner().getEntity().getCurrentHP());
-        System.out.println(world.getPartner().getEntity().getName());
-        System.out.println(manager.readString(0xBAD1B0, 10));
-        //while (RUN)
-        //    run();
+        while (RUN)
+            run();
     }
     
     private void run() {
@@ -137,5 +134,9 @@ public class DigimonWorldAPI {
 
     public Buttons getButtons() {
         return buttons;
+    }
+    
+    public Triggers getTriggers() {
+        return triggers;
     }
 }

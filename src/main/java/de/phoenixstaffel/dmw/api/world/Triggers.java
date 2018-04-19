@@ -27,4 +27,15 @@ public class Triggers extends BaseStructure {
         
         return (value >>> bitId & 0x01) != 0;
     }
+    
+    public void setTrigger(int id) {
+        int byteId = id / 8;
+        int bitId = id % 8;
+        
+        byte[] triggers = ((byte[])readStructure("triggers"));
+        
+        triggers[byteId] |= (1 << bitId);
+        
+        writeStructure("triggers", triggers);
+    }
 }

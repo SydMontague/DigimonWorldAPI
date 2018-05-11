@@ -47,7 +47,7 @@ public class EvolutionPaths extends BaseStructure {
         byte[] array = (byte[]) readStructure("To");
         
         for (int i = 0; i < EVOLVE_TO_SIZE; i++)
-            list[i] = getMain().getDigimonManager().getDigimon(array[i]);
+            list[i] = getMain().getDigimonManager().getDigimon((short) Byte.toUnsignedInt(array[i]));
         
         return list;
     }

@@ -15,7 +15,7 @@ public class DigimonManager {
     }
     
     public Digimon getDigimon(short id) {
-        return id == -1 ? null : digimonList.get(id);
+        return id == -1 || digimonList.size() <= id ? null : digimonList.get(id);
     }
     
     public Digimon getDigimonByName(String name) {
